@@ -1,0 +1,39 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp">
+
+    <!-- Container for sender name and message -->
+    <LinearLayout
+        android:id="@+id/messageContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="false">
+
+        <!-- Sender's name TextView -->
+        <TextView
+            android:id="@+id/senderNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="#666666"
+            android:layout_marginStart="6dp"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Message bubble TextView -->
+        <TextView
+            android:id="@+id/messageTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="8sp"
+            android:textSize="16sp"
+            android:padding="16dp"
+            android:textColor="#000000"
+            android:maxWidth="250dp"
+            />
+    </LinearLayout>
+</RelativeLayout>
