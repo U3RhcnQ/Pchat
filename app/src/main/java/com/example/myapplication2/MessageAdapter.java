@@ -13,7 +13,7 @@ import java.util.List;
 
 class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder> {
 
-    private List<Message> messages;
+    private final List<Message> messages;
 
     public MessageAdapter(List<Message> messages) {
         this.messages = messages;
@@ -51,8 +51,6 @@ class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHold
 
         holder.messageContainer.setLayoutParams(containerParams);
     }
-
-
 
     @Override
     public int getItemCount() {
