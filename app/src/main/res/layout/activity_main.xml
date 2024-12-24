@@ -10,13 +10,13 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/messageRecyclerView"
-        android:layout_width="370dp"
-        android:layout_height="639dp"
+        android:layout_width="384dp"
+        android:layout_height="632dp"
         android:layout_above="@+id/layout_send_message"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintHorizontal_bias="0.347"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,5 +49,20 @@
             android:text="Send" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="85dp"
+        android:layout_height="41dp"
+        android:backgroundTint="#DB7302"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.947"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.018" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

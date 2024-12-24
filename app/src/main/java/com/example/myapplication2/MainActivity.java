@@ -31,23 +31,19 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MyActivity";
-    private int RoomID = 10;
+    private int RoomID = 0;
     private int MessageID = 0;
     private final FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private final DatabaseReference myRef = this.database.getReference("Rooms/"+this.RoomID+"/");
-    private final DatabaseReference lastMessageKey = this.database.getReference("Rooms/"+this.RoomID+"/lastKey");
+    private DatabaseReference myRef;
+    private DatabaseReference lastMessageKey;
     private String lastKey ="";
-
-    private final String username = "Petr2";
+    private String username = "";
     // Create a new message
     Map<String, Object> message = new HashMap<>();
-
     // Create a list of messages to bind to the RecyclerView
     private List<Message> messageList;
-
     private MessageAdapter messageAdapter;
     private RecyclerView recyclerView;
-
 
     public FirebaseDatabase getDatabase() {
         return database;
@@ -55,6 +51,10 @@ public class MainActivity extends AppCompatActivity {
 
     public int getRoomID() {
         return RoomID;
+    }
+
+    public void setRoomID(int ID){
+        this.RoomID = ID;
     }
 
     private void sendMessage(String text) {
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
@@ -95,8 +95,20 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            username = extras.getString("username");
+            setRoomID(extras.getInt("roomID"));
+            //The key argument here must match that used in the other activity
+        }
+
+        // Ensure we have correct data:
+        myRef = this.database.getReference("Rooms/"+this.RoomID+"/");
+        lastMessageKey = this.database.getReference("Rooms/"+this.RoomID+"/lastKey");
+
         // Find views by their IDs
         Button myButton = findViewById(R.id.buttonSend);
+        Button backButton = findViewById(R.id.backButton);
         EditText myTextView = findViewById(R.id.editTextMessage);
         recyclerView = findViewById(R.id.messageRecyclerView);
 
@@ -170,6 +182,14 @@ public class MainActivity extends AppCompatActivity {
                     sendMessage(message);
                 }
                 myTextView.setText("");
+            }
+        });
+
+        // Set an OnClickListener on the Button
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }
