@@ -1,6 +1,6 @@
 package com.example.myapplication2;
 
-class Message {
+public class Message {
     private final String content;
     private final String senderName;
     private final boolean sent;
