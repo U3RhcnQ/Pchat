@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MyActivity";
     private int RoomID = 0;
-    private int MessageID = 0;
     private final FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRef;
     private DatabaseReference lastMessageKey;
